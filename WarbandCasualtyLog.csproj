@@ -7,7 +7,7 @@
     <ProjectGuid>{B6462E61-2A28-49E7-AA1A-00B3863F3966}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WarbandCasualtyList</RootNamespace>
+    <RootNamespace>WarbandCasualtyLog</RootNamespace>
     <AssemblyName>WarbandCasualtyLog</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -17,7 +17,7 @@
     <DebugSymbols>false</DebugSymbols>
     <DebugType>none</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>C:\Games\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\WarbandCasualtyList\bin\Win64_Shipping_Client\</OutputPath>
+    <OutputPath>C:\Games\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\WarbandCasualtyLog\bin\Win64_Shipping_Client\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -36,15 +36,19 @@
     </Reference>
     <Reference Include="SandBox">
       <HintPath>C:\Games\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\SandBox\bin\Win64_Shipping_Client\SandBox.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="SandBox.GauntletUI">
       <HintPath>C:\Games\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\SandBox\bin\Win64_Shipping_Client\SandBox.GauntletUI.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="SandBox.View">
       <HintPath>C:\Games\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\SandBox\bin\Win64_Shipping_Client\SandBox.View.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="SandBox.ViewModelCollection">
       <HintPath>C:\Games\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\SandBox\bin\Win64_Shipping_Client\SandBox.ViewModelCollection.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -152,6 +156,7 @@
     </Reference>
     <Reference Include="TaleWorlds.MountAndBlade.GauntletUI">
       <HintPath>C:\Games\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\Native\bin\Win64_Shipping_Client\TaleWorlds.MountAndBlade.GauntletUI.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="TaleWorlds.MountAndBlade.GauntletUI.Widgets">
       <HintPath>C:\Games\Mount &amp; Blade II Bannerlord\bin\Win64_Shipping_Client\TaleWorlds.MountAndBlade.GauntletUI.Widgets.dll</HintPath>
@@ -163,6 +168,7 @@
     </Reference>
     <Reference Include="TaleWorlds.MountAndBlade.View">
       <HintPath>C:\Games\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\Native\bin\Win64_Shipping_Client\TaleWorlds.MountAndBlade.View.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="TaleWorlds.MountAndBlade.ViewModelCollection">
       <HintPath>C:\Games\Mount &amp; Blade II Bannerlord\bin\Win64_Shipping_Client\TaleWorlds.MountAndBlade.ViewModelCollection.dll</HintPath>

@@ -13,7 +13,7 @@ using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.ViewModelCollection.HUD.KillFeed;
 
-namespace WarbandCasualtyList
+namespace WarbandCasualtyLog
 {
     [HarmonyPatch(typeof(SPKillFeedVM), "OnAgentRemoved")]
     internal class LogPatch

@@ -15,7 +15,7 @@ using TaleWorlds.MountAndBlade;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 
-namespace WarbandCasualtyList
+namespace WarbandCasualtyLog
 {
     public class SubModule : MBSubModuleBase
     {
