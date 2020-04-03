@@ -14,12 +14,15 @@ using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
+using SandBox.View.Map;
+using TaleWorlds.CampaignSystem.ViewModelCollection.Map;
+using TaleWorlds.Engine.Screens;
+using TaleWorlds.InputSystem;
 
 namespace WarbandCasualtyLog
 {
     public class SubModule : MBSubModuleBase
     {
-        
         protected override void OnSubModuleLoad()
         {
             base.OnSubModuleLoad();
@@ -27,4 +30,6 @@ namespace WarbandCasualtyLog
             harmony.PatchAll();
         }
     }
+
+    
 }

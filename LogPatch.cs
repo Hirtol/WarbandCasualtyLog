@@ -19,9 +19,9 @@ namespace WarbandCasualtyLog
     internal class LogPatch
     {
 
-        public const string CYAN = "#00997AB7";
-        public const string ORANGE = "#CC6600E5";
-        public const string RED = "#AF6353FF";
+        public static readonly Color CYAN = Color.ConvertStringToColor("#00997AB7");
+        public static readonly Color ORANGE = Color.ConvertStringToColor("#FFA862FF");
+        public static readonly Color RED = Color.ConvertStringToColor("#AF6353FF");
 
         /**
          * Cancel main method call by returning false, don't want the normal log to display.
@@ -44,25 +44,20 @@ namespace WarbandCasualtyLog
 
         private static Color GetColor(Agent killed, bool isUnconscious)
         {
-            Color result;
             if (killed.Team != null)
             {
                 if (killed.Team.IsPlayerAlly)
                 {
-                    result = isUnconscious ? Color.ConvertStringToColor(ORANGE) : Color.ConvertStringToColor(RED);
+                    return isUnconscious ? ORANGE : RED;
                 }
-                else
-                {
-                    result = Color.ConvertStringToColor(CYAN);
-                }
+
+                return CYAN;
             }
             else
             {
                 InformationManager.DisplayMessage(new InformationMessage("ERROR: Warband log exception!"));
-                result = Color.FromUint(4294967295u);
+                return Color.FromUint(4294967295u);
             }
-
-            return result;
         }
     }
 }
