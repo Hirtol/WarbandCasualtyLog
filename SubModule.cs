@@ -30,7 +30,7 @@ namespace WarbandCasualtyLog
             WarbandConfig.Initialize();
             var harmony = new Harmony("top.hirtol.warbandcasualty.patch");
             harmony.PatchAll();
-            Trace.WriteLine($"Values{WarbandConfig.DefaultFriendlyKill} {WarbandConfig.DefaultFriendlyKilled} {WarbandConfig.DefaultFriendlyUnconscious}");
+            LogPatch.loadConfigValues();
         }
 
         protected override void OnSubModuleUnloaded()

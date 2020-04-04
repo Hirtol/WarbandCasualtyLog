@@ -11,7 +11,7 @@ namespace WarbandCasualtyLog
 {
     public static class WarbandConfig
     {
-        public const string DefaultFriendlyKill = "#00997AB7";
+        public const string DefaultFriendlyKill = "#9AD7B4FF";
         public const string DefaultFriendlyKilled = "#AF6353FF"; 
         public const string DefaultFriendlyUnconscious = "#FFA862FF";
 
@@ -44,7 +44,6 @@ namespace WarbandCasualtyLog
                 }
                 else
                 {
-                    var flag = false;
                     var array = text.Split('\n');
                     for (var i = 0; i < array.Length; i++)
                     {
@@ -52,7 +51,7 @@ namespace WarbandCasualtyLog
                         var property = typeof(WarbandConfig).GetProperty(array2[0]);
                         if (property == null)
                         {
-                            flag = true;
+                            SubModule.invalidConfigFlag = true;
                         }
                         else
                         {
@@ -71,47 +70,14 @@ namespace WarbandCasualtyLog
                                         SubModule.invalidConfigFlag = true;
                                     }
                                 }
-                                else if (property.PropertyType == typeof(float))
-                                {
-                                    float num;
-                                    if (float.TryParse(text2, out num))
-                                        property.SetValue(null, num);
-                                    else
-                                        flag = true;
-                                }
-                                else if (property.PropertyType == typeof(int))
-                                {
-                                    int num2;
-                                    if (int.TryParse(text2, out num2))
-                                    {
-                                        var customAttribute =
-                                            property.GetCustomAttribute<WarbandConfig.ConfigPropertyInt>();
-                                        if (customAttribute == null || customAttribute.IsValidValue(num2))
-                                            property.SetValue(null, num2);
-                                        else
-                                            SubModule.invalidConfigFlag = true;
-                                    }
-                                    else
-                                    {
-                                        flag = true;
-                                    }
-                                }
-                                else if (property.PropertyType == typeof(bool))
-                                {
-                                    bool flag2;
-                                    if (bool.TryParse(text2, out flag2))
-                                        property.SetValue(null, flag2);
-                                    else
-                                        flag = true;
-                                }
                                 else
                                 {
-                                    flag = true;
+                                    SubModule.invalidConfigFlag = true;
                                 }
                             }
                             catch
                             {
-                                flag = true;
+                                SubModule.invalidConfigFlag = true;
                             }
                         }
                     }
@@ -158,30 +124,6 @@ namespace WarbandCasualtyLog
             {
                 if(!_reqPrefix.Equals("") && value.StartsWith(_reqPrefix))
                     return value.Length >= _minLength && value.Length <= _maxLength;
-                return false;
-            }
-        }
-
-        private sealed class ConfigPropertyInt : WarbandConfig.ConfigProperty
-        {
-            private readonly bool _isRange;
-
-            private readonly int[] _possibleValues;
-
-            public ConfigPropertyInt(int[] possibleValues, bool isRange = false)
-            {
-                _possibleValues = possibleValues;
-                _isRange = isRange;
-            }
-
-            public bool IsValidValue(int value)
-            {
-                if (_isRange) 
-                    return value >= _possibleValues[0] && value <= _possibleValues[1];
-                var possibleValues = _possibleValues;
-                for (var i = 0; i < possibleValues.Length; i++)
-                    if (i == value)
-                        return true;
                 return false;
             }
         }

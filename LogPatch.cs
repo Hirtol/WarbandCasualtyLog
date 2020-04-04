@@ -19,7 +19,7 @@ namespace WarbandCasualtyLog
     internal class LogPatch
     {
 
-        public static Color CYAN = Color.White;
+        public static Color CYAN;
         public static Color ORANGE;
         public static Color RED;
 
@@ -42,15 +42,15 @@ namespace WarbandCasualtyLog
             return false;
         }
 
+        public static void loadConfigValues()
+        {
+            CYAN = Color.ConvertStringToColor(WarbandConfig.FriendlyKill);
+            ORANGE = Color.ConvertStringToColor(WarbandConfig.FriendlyUnconscious);
+            RED = Color.ConvertStringToColor(WarbandConfig.FriendlyKilled);
+        }
+
         private static Color GetColor(Agent killed, bool isUnconscious)
         {
-
-            if (CYAN == Color.White)
-            {
-                CYAN = Color.ConvertStringToColor(WarbandConfig.FriendlyKill);
-                ORANGE = Color.ConvertStringToColor(WarbandConfig.FriendlyUnconscious);
-                RED = Color.ConvertStringToColor(WarbandConfig.FriendlyKilled);
-            }
 
             if (killed.Team != null)
             {
