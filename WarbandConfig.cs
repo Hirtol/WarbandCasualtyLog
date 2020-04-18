@@ -14,6 +14,8 @@ namespace WarbandCasualtyLog
         public const string DefaultFriendlyKill = "#9AD7B4FF";
         public const string DefaultFriendlyKilled = "#AF6353FF"; 
         public const string DefaultFriendlyUnconscious = "#FFA862FF";
+        public const string DefaultAllyUnconscious = "#EEA4FFFF";
+        public const string DefaultAllyKilled = "#F11CB5FF";
 
         private static string _fileName;
 
@@ -25,6 +27,12 @@ namespace WarbandCasualtyLog
         public static string FriendlyKilled { get; set; } = DefaultFriendlyKilled;
         [WarbandConfig.ConfigPropertyString(9, 9, "#")]
         public static string FriendlyUnconscious { get; set; } = DefaultFriendlyUnconscious;
+
+        [WarbandConfig.ConfigPropertyString(9, 9, "#")]
+        public static string AllyUnconscious { get; set; } = DefaultAllyUnconscious;
+
+        [WarbandConfig.ConfigPropertyString(9, 9, "#")]
+        public static string AllyKilled { get; set; } = DefaultAllyKilled;
 
         public static void Initialize()
         {
