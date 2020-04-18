@@ -19,9 +19,11 @@ namespace WarbandCasualtyLog
     internal class LogPatch
     {
 
-        public static readonly Color CYAN = Color.ConvertStringToColor("#00997AB7");
-        public static readonly Color ORANGE = Color.ConvertStringToColor("#FFA862FF");
-        public static readonly Color RED = Color.ConvertStringToColor("#AF6353FF");
+        public static Color CYAN;
+        public static Color ORANGE;
+        public static Color RED;
+        public static Color PURPLE;
+        public static Color LIGHT_PURPLE;
 
         /**
          * Cancel main method call by returning false, don't want the normal log to display.
@@ -38,17 +40,30 @@ namespace WarbandCasualtyLog
 
             builder.Append(itemVM.MurdererName);
             InformationManager.DisplayMessage(new InformationMessage(builder.ToString(), GetColor(affectedAgent, itemVM.IsUnconscious)));
-
             return false;
+        }
+
+        public static void loadConfigValues()
+        {
+            CYAN = Color.ConvertStringToColor(WarbandConfig.FriendlyKill);
+            ORANGE = Color.ConvertStringToColor(WarbandConfig.FriendlyUnconscious);
+            RED = Color.ConvertStringToColor(WarbandConfig.FriendlyKilled);
+            PURPLE = Color.ConvertStringToColor(WarbandConfig.AllyKilled);
+            LIGHT_PURPLE = Color.ConvertStringToColor(WarbandConfig.AllyUnconscious);
         }
 
         private static Color GetColor(Agent killed, bool isUnconscious)
         {
+            
             if (killed.Team != null)
             {
-                if (killed.Team.IsPlayerAlly)
+                if (killed.Team.IsPlayerTeam)
                 {
                     return isUnconscious ? ORANGE : RED;
+                }
+                else if (killed.Team.IsPlayerAlly)
+                {
+                    return isUnconscious ? LIGHT_PURPLE : PURPLE;
                 }
 
                 return CYAN;

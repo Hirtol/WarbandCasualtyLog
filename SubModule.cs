@@ -16,6 +16,7 @@ using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using SandBox.View.Map;
 using TaleWorlds.CampaignSystem.ViewModelCollection.Map;
+using TaleWorlds.Engine;
 using TaleWorlds.Engine.Screens;
 using TaleWorlds.InputSystem;
 
@@ -23,11 +24,34 @@ namespace WarbandCasualtyLog
 {
     public class SubModule : MBSubModuleBase
     {
+        public static bool invalidConfigFlag = false;
+
         protected override void OnSubModuleLoad()
         {
             base.OnSubModuleLoad();
+            WarbandConfig.Initialize();
             var harmony = new Harmony("top.hirtol.warbandcasualty.patch");
             harmony.PatchAll();
+            LogPatch.loadConfigValues();
+            WarbandConfig.Save();
+        }
+
+        protected override void OnGameStart(Game game, IGameStarter gameStarterObject)
+        {
+
+        }
+
+        protected override void OnSubModuleUnloaded()
+        {
+            WarbandConfig.Save();
+        }
+
+        protected override void OnApplicationTick(float dt)
+        {
+            if (invalidConfigFlag)
+            {
+                InformationManager.DisplayMessage(new InformationMessage("Invalid value(s) in Warband Casualty Log Config, please reconfigure!"));
+            }
         }
     }
 
