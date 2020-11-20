@@ -34,12 +34,12 @@ namespace WarbandCasualtyLog
             var itemVM = new SPMissionKillNotificationItemVM(affectedAgent, affectorAgent, null, null);
 
             var builder = new StringBuilder();
-            builder.Append(itemVM.VictimName);
+            builder.Append(affectedAgent.Name);
 
-            builder.Append(itemVM.IsUnconscious ? " knocked unconscious by " : " killed by ");
+            builder.Append(affectedAgent.State == AgentState.Unconscious ? " knocked unconscious by " : " killed by ");
 
-            builder.Append(itemVM.MurdererName);
-            InformationManager.DisplayMessage(new InformationMessage(builder.ToString(), GetColor(affectedAgent, itemVM.IsUnconscious)));
+            builder.Append(affectorAgent.Name);
+            InformationManager.DisplayMessage(new InformationMessage(builder.ToString(), GetColor(affectedAgent, affectedAgent.State == AgentState.Unconscious)));
             return false;
         }
 
